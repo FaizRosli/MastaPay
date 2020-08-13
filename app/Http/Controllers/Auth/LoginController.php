@@ -1,0 +1,55 @@
+<?php
+
+namespace MastaPay\Http\Controllers\Auth;
+
+use MastaPay\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+//use MastaPay\model\dropship;
+
+class LoginController extends Controller
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Login Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles authenticating users for the application and
+    | redirecting them to your home screen. The controller uses a trait
+    | to conveniently provide its functionality to your applications.
+    |
+    */
+
+    use AuthenticatesUsers;
+
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/home';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
+    // public function logoutdropship(Request $request)
+    // {
+    //     //dd("logout");
+    //     Auth::guard('dropship')->logout();
+
+    //     $request->session()->invalidate();
+
+    //     return $this->loggedOut($request) ?: redirect('/');
+
+    //     // Auth::logout('dropship');
+    //     // return $this->loggedOut($request) ?: redirect('/');
+    // }
+}
